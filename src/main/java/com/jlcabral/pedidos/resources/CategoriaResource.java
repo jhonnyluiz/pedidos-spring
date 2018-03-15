@@ -1,8 +1,5 @@
 package com.jlcabral.pedidos.resources;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,13 +11,13 @@ import com.jlcabral.pedidos.domain.Categoria;
 import com.jlcabral.pedidos.services.CategoriaService;
 
 @RestController
-@RequestMapping(value="/categorias")
+@RequestMapping(value = "/categorias")
 public class CategoriaResource {
-	
+
 	@Autowired
 	private CategoriaService service;
-	
-	@RequestMapping(value="/{id}", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> listar(@PathVariable Long id) {
 		Categoria obj = service.buscarPorId(id);
 		return ResponseEntity.ok().body(obj);
