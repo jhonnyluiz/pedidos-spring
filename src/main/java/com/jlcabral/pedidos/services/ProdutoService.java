@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.jlcabral.pedidos.domain.Produto;
 import com.jlcabral.pedidos.repositories.ProdutoRepository;
+import com.jlcabral.pedidos.services.exceptions.ObjetoNaoEncontradoException;
 
 @Service
 public class ProdutoService {
@@ -16,6 +17,6 @@ public class ProdutoService {
 	
 	public Produto buscarPorId(Long id) {
 		Optional<Produto> obj = repo.findById(id);
-		return obj.orElse(null);
+		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException(id.toString(), Produto.class));
 	}
 }
