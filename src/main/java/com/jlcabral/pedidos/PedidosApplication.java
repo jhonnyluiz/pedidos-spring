@@ -13,6 +13,7 @@ import com.jlcabral.pedidos.domain.Cidade;
 import com.jlcabral.pedidos.domain.Cliente;
 import com.jlcabral.pedidos.domain.Endereco;
 import com.jlcabral.pedidos.domain.Estado;
+import com.jlcabral.pedidos.domain.ItemPedido;
 import com.jlcabral.pedidos.domain.Pagamento;
 import com.jlcabral.pedidos.domain.PagamentoComBoleto;
 import com.jlcabral.pedidos.domain.PagamentoComCartao;
@@ -25,6 +26,7 @@ import com.jlcabral.pedidos.repositories.CidadeRepository;
 import com.jlcabral.pedidos.repositories.ClienteRepository;
 import com.jlcabral.pedidos.repositories.EnderecoRepository;
 import com.jlcabral.pedidos.repositories.EstadoRepository;
+import com.jlcabral.pedidos.repositories.ItemPedidoRepository;
 import com.jlcabral.pedidos.repositories.PagamentoRepository;
 import com.jlcabral.pedidos.repositories.PedidoRepository;
 import com.jlcabral.pedidos.repositories.ProdutoRepository;
@@ -55,6 +57,9 @@ public class PedidosApplication implements CommandLineRunner {
 
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
+	
+	@Autowired
+	private ItemPedidoRepository itemPedidoRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(PedidosApplication.class, args);
@@ -118,5 +123,18 @@ public class PedidosApplication implements CommandLineRunner {
 
 		pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
 		pagamentoRepository.saveAll(Arrays.asList(pagto1, pagto2));
+		
+		ItemPedido ip1 = new ItemPedido(ped1, p1, 0.00, 1, 2000.0);
+		ItemPedido ip2 = new ItemPedido(ped1, p3, 0.00, 2, 80.0);
+		ItemPedido ip3 = new ItemPedido(ped2, p2, 100.00, 1, 800.00);
+		
+		ped1.getItens().addAll(Arrays.asList(ip1, ip2));
+		ped2.getItens().addAll(Arrays.asList(ip3));
+		
+		p1.getItens().addAll(Arrays.asList(ip1));
+		p2.getItens().addAll(Arrays.asList(ip2));
+		p3.getItens().addAll(Arrays.asList(ip3));
+		
+		itemPedidoRepository.saveAll(Arrays.asList(ip1,ip2, ip3));
 	}
 }
