@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.jlcabral.pedidos.domain.Categoria;
+import com.jlcabral.pedidos.dto.CategoriaDTO;
 import com.jlcabral.pedidos.repositories.CategoriaRepository;
 import com.jlcabral.pedidos.services.exceptions.DataIntegrityException;
 import com.jlcabral.pedidos.services.exceptions.ObjetoNaoEncontradoException;
@@ -48,8 +49,12 @@ public class CategoriaService {
 	public List<Categoria> findAll() {
 		return repo.findAll();
 	}
-	
+
 	public Page<Categoria> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		return repo.findAll(PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy));
+	}
+
+	public Categoria fromDTO(CategoriaDTO objDTO) {
+		return new Categoria(objDTO.getId(), objDTO.getNome());
 	}
 }
