@@ -10,7 +10,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
-import com.jlcabral.pedidos.domain.Categoria;
 import com.jlcabral.pedidos.domain.Cidade;
 import com.jlcabral.pedidos.repositories.CidadeRepository;
 import com.jlcabral.pedidos.services.exceptions.DataIntegrityException;
