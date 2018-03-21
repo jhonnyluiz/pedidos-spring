@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.jlcabral.pedidos.domain.Endereco;
 import com.jlcabral.pedidos.repositories.EnderecoRepository;
 import com.jlcabral.pedidos.services.exceptions.DataIntegrityException;
+import com.jlcabral.pedidos.services.exceptions.ObjetoNaoEncontradoException;
 
 @Service
 public class EnderecoService {
@@ -22,7 +23,7 @@ public class EnderecoService {
 
 	public Endereco findById(Long id) {
 		Optional<Endereco> obj = repo.findById(id);
-		return obj.orElse(null);
+		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException(id.toString(), Endereco.class));
 	}
 	
 	public Endereco insert(Endereco obj) {

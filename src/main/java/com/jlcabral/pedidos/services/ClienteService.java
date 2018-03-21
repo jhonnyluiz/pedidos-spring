@@ -18,6 +18,7 @@ import com.jlcabral.pedidos.dto.ClienteNewDTO;
 import com.jlcabral.pedidos.enuns.TipoCliente;
 import com.jlcabral.pedidos.repositories.ClienteRepository;
 import com.jlcabral.pedidos.services.exceptions.DataIntegrityException;
+import com.jlcabral.pedidos.services.exceptions.ObjetoNaoEncontradoException;
 
 @Service
 public class ClienteService {
@@ -33,7 +34,7 @@ public class ClienteService {
 
 	public Cliente findById(Long id) {
 		Optional<Cliente> obj = repo.findById(id);
-		return obj.orElse(null);
+		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException(id.toString(), Cliente.class));
 	}
 	
 	public Cliente insert(Cliente obj) {
