@@ -53,6 +53,12 @@ public class Cliente implements Serializable {
 		this.tipo = (tipo == null) ? null : tipo.getCodigo();
 	}
 
+	public void addTelefone(String telefone) {
+		if(telefone != null && telefone != "") {
+			telefones.add(telefone);
+		}
+	}
+	
 	public Long getId() {
 		return id;
 	}
