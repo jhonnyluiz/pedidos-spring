@@ -32,6 +32,7 @@ public class Cliente implements Serializable {
 	private String email;
 
 	private String cpfOuCnpj;
+	
 	private Integer tipo;
 
 	@OneToMany(mappedBy = "cliente", cascade=CascadeType.REMOVE)
@@ -117,10 +118,6 @@ public class Cliente implements Serializable {
 
 	public void setTelefones(Set<String> telefones) {
 		this.telefones = telefones;
-	}
-
-	public void setTipo(Integer tipo) {
-		this.tipo = tipo;
 	}
 
 	public List<Pedido> getPedidos() {
