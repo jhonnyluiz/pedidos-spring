@@ -8,11 +8,13 @@ import javax.validation.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Length;
 
 import com.jlcabral.pedidos.domain.Cliente;
+import com.jlcabral.pedidos.services.validation.ClienteUpdate;
 
 /**
  * @author Jhonny Cabral
  * @date 19 de mar de 2018
  */
+@ClienteUpdate
 public class ClienteDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
