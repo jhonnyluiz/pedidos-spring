@@ -149,13 +149,14 @@ public class Cliente implements Serializable {
 		this.senha = senha;
 	}
 
-	public Set<Perfil> setPerfis() {
+	public Set<Perfil> getPerfis() {
 		return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
 	}
 	
 	public void addPerfil(Perfil perfil) {
 		perfis.add(perfil.getCodigo());
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

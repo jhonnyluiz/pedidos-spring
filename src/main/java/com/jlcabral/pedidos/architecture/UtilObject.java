@@ -17,7 +17,7 @@ public class UtilObject {
 		return !isVazio(obj);
 	}
 	
-	public static boolean isNull(String obj) {
+	public static boolean isNull(Object obj) {
 		if (obj == null) {
 			return true;
 		}
