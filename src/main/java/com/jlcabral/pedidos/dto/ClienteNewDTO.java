@@ -15,36 +15,41 @@ import com.jlcabral.pedidos.services.validation.ClienteInsert;
  */
 @ClienteInsert
 public class ClienteNewDTO implements Serializable {
+	private static final String PREENCHIMENTO_OBRIGATÓRIO = "Preenchimento obrigatório";
+
 	private static final long serialVersionUID = 1L;
 
-	@NotEmpty(message = "Preenchimento obrigatório")
+	@NotEmpty(message = PREENCHIMENTO_OBRIGATÓRIO)
 	@Length(min = 5, max = 80, message = "O tamanho deve ser entre 5 e 80 caracteres")
 	private String nome;
 	
-	@NotEmpty(message = "Preenchimento obrigatório")
+	@NotEmpty(message = PREENCHIMENTO_OBRIGATÓRIO)
 	@Email(message="E-mail inválido")
 	private String email;
 	
-	@NotEmpty(message = "Preenchimento obrigatório")
+	@NotEmpty(message = PREENCHIMENTO_OBRIGATÓRIO)
 	private String cpfOuCnpj;
 	
 	private Integer tipo;
 
-	@NotEmpty(message = "Preenchimento obrigatório")
+	@NotEmpty(message = PREENCHIMENTO_OBRIGATÓRIO)
+	private String senha;
+
+	@NotEmpty(message = PREENCHIMENTO_OBRIGATÓRIO)
 	private String logradouro;
 	
 	private String numero;
 	
-	@NotEmpty(message = "Preenchimento obrigatório")
+	@NotEmpty(message = PREENCHIMENTO_OBRIGATÓRIO)
 	private String complemento;
 	
-	@NotEmpty(message = "Preenchimento obrigatório")
+	@NotEmpty(message = PREENCHIMENTO_OBRIGATÓRIO)
 	private String bairro;
 	
-	@NotEmpty(message = "Preenchimento obrigatório")
+	@NotEmpty(message = PREENCHIMENTO_OBRIGATÓRIO)
 	private String cep;
 
-	@NotEmpty(message = "Preenchimento obrigatório")
+	@NotEmpty(message = PREENCHIMENTO_OBRIGATÓRIO)
 	private String telefone1;
 	private String telefone2;
 	private String telefone3;
@@ -156,6 +161,14 @@ public class ClienteNewDTO implements Serializable {
 
 	public void setCidadeId(Long cidadeId) {
 		this.cidadeId = cidadeId;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 }
