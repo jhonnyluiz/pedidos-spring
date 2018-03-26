@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Profile;
 
 import com.jlcabral.pedidos.services.DBService;
 import com.jlcabral.pedidos.services.EmailService;
-import com.jlcabral.pedidos.services.MockMailService;
+import com.jlcabral.pedidos.services.MockEmailService;
 
 /**
  * @author Jhonny Cabral
@@ -30,6 +30,6 @@ public class TestConfig {
 	
 	@Bean
 	public EmailService emailService() {
-		return new MockMailService();
+		return new MockEmailService();
 	}
 }

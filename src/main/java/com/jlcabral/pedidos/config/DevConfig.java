@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import com.jlcabral.pedidos.services.DBService;
+import com.jlcabral.pedidos.services.EmailService;
+import com.jlcabral.pedidos.services.SMTPEmailService;
 
 /**
  * @author Jhonny Cabral
@@ -33,5 +35,10 @@ public class DevConfig {
 			return true;
 		}
 		return false;
+	}
+	
+	@Bean
+	public EmailService emailService() {
+		return new SMTPEmailService();
 	}
 }
