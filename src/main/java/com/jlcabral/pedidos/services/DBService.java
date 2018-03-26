@@ -20,6 +20,7 @@ import com.jlcabral.pedidos.domain.PagamentoComCartao;
 import com.jlcabral.pedidos.domain.Pedido;
 import com.jlcabral.pedidos.domain.Produto;
 import com.jlcabral.pedidos.enuns.EstadoPagamento;
+import com.jlcabral.pedidos.enuns.Perfil;
 import com.jlcabral.pedidos.enuns.TipoCliente;
 import com.jlcabral.pedidos.repositories.CategoriaRepository;
 import com.jlcabral.pedidos.repositories.CidadeRepository;
@@ -126,16 +127,22 @@ public class DBService {
 		estadoRepository.saveAll(Arrays.asList(est1, est2));
 		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3));
 
-		Cliente cli1 = new Cliente(null, "Maria da Silva", "jhonny_luiz_c@hotmail.com", "12345678911", TipoCliente.PESSOAFISICA, pe.encode("123"));
+		Cliente cli1 = new Cliente(null, "Maria da Silva", "jhonny.luiz.c@hotmail.com", "12345678911", TipoCliente.PESSOAFISICA, pe.encode("123"));
 		cli1.getTelefones().addAll(Arrays.asList("62 98456-4567", "11 4856-8789"));
+
+		Cliente cli2 = new Cliente(null, "Jhonny Cabral", "jhonny_luiz_c@hotmail.com", "12345678911", TipoCliente.PESSOAFISICA, pe.encode("123"));
+		cli2.addPerfil(Perfil.ADMIN);
+		cli2.getTelefones().addAll(Arrays.asList("62 98745-3245", "11 4875-1245"));
 
 		Endereco e1 = new Endereco(null, "Rua 1", "309", "Qd 10 Lt12", "Centro", "45612-564", c1, cli1);
 		Endereco e2 = new Endereco(null, "Rua 87", "650", "Qd A-9 Lt34", "Campinas", "78915-564", c2, cli1);
+		Endereco e3 = new Endereco(null, "Rua Belem", "456", null, "Centro", "48571-564", c3, cli2);
 
 		cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
+		cli2.getEnderecos().addAll(Arrays.asList(e3));
 
-		clienteRepository.saveAll(Arrays.asList(cli1));
-		enderecoRepository.saveAll(Arrays.asList(e1, e2));
+		clienteRepository.saveAll(Arrays.asList(cli1, cli2));
+		enderecoRepository.saveAll(Arrays.asList(e1, e2, e3));
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
 
