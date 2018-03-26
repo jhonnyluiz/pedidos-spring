@@ -23,4 +23,8 @@ public class UtilObject {
 		}
 		return false;
 	}
+	
+	public static boolean isNotNull(Object obj) {
+		return !isNull(obj);
+	}
 }
