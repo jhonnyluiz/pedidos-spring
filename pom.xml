@@ -80,6 +80,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>pedidos</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
